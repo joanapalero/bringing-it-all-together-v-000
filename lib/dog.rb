@@ -25,7 +25,7 @@ attr_accessor :name, :breed, :id
    DB[:conn].execute(sql, self.name, self.breed)
    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
     end
-  self
+    self
   end
 
   def self.create(attributes)
@@ -39,7 +39,6 @@ attr_accessor :name, :breed, :id
     result = DB[:conn].execute(sql, id)[0]
     attributes = {name: result[1], breed: result[2]}
     dog = Dog.new(attributes, id= result[0])
-    # binding.pry
     dog
   end
 
